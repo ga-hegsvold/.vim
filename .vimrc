@@ -1,7 +1,5 @@
-" Setup file for VIM 7.3
+" Setup file for VIM 7.4
 " by Geir Atle Hegsvold
-"
-" Last edit: 2016-08-04
 
 " The leader key is used for activation for shortcuts.
 " Default is \
@@ -15,12 +13,6 @@ execute pathogen#infect()
 syntax on
 filetype indent plugin on
 
-" Enable Powerline
-"set rtp+=/usr/local/lib/python3.4/dist-packages/powerline/bindings/vim/
-"set laststatus=2
-"set showtabline=2
-"set t_Co=256
-
 " Encoding
 if has("multi_byte")
   if &termencoding == ""
@@ -31,6 +23,10 @@ if has("multi_byte")
   "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
+
+" Update intervall for GitGutter
+" More info: https://github.com/airblade/vim-gitgutter
+set updatetime=250
 
 " Code folding
 set foldmethod=indent
@@ -44,14 +40,6 @@ set nu
 
 " Menu language
 set langmenu=en
-
-" Needed for 16 color XTerms
-"if $HOSTTYPE == 'i386' && has("terminfo") && $TERM != 'linux'
-"    set t_Co=16
-"    set t_AB=[%?%p1%{8}%<%t%p1%{40}%+%e%p1%{92}%+%;%dm
-"    set t_AF=[%?%p1%{8}%<%t%p1%{30}%+%e%p1%{82}%+%;%dm
-"    let is_highintensity = 1
-"endif
 
 " Set highlighting colors for a dark background
 set background=dark
@@ -89,6 +77,9 @@ set modelines=1
 " Don't keep backups
 set nobackup
 
+" No temporary backups
+set nowritebackup
+
 " No warning beeps
 set noerrorbells
 
@@ -100,9 +91,6 @@ set nohlsearch
 
 " Don't break lines
 set nowrap
-
-" No temporary backups
-set nowritebackup
 
 " Show line and column number of the cursor position
 set ruler
@@ -145,13 +133,6 @@ set whichwrap=<,>,[,]
 " `myscripts.vim' checks for filetypes that must be inspected to be identified
 "let myscriptsfile = "$VIM/mysyntax/myscripts.vim"
 "let myscriptsfile = "$HOME/lib/vim/myscripts.vim"
-
-" The location of X's color database (needed for the Fvwm syntax file)
-"if $HOSTTYPE == 'i386' || $HOSTTYPE == 'linux'
-"    let rgb_file = "/usr/X11R6/lib/X11/rgb.txt"
-"elseif $HOSTTYPE == 'sparc' || $HOSTTYPE == 'sol' || $HOSTTYPE == 'sgi'
-"    let rgb_file = "/local/X11R5/lib/X11/rgb.txt"
-"endif
 
 " I always use bash, and the following variable extends $VIM/syntax/sh.vim
 " for that shell
@@ -216,7 +197,26 @@ else
     set guifont=Courier:h8:cDEFAULT
 endif
 
-"map  :w!<CR>:!aspell check %<CR>:e! %<CR>
+" Format JSON
+nmap =j :%!python -m json.tool<CR>
+
+" Format XML
+map =x !%xmllint --format --recover -<CR>
+
+" FIXME SQL Utils http://www.vim.org/scripts/script.php?script_id=492
+vmap <silent>sf        <Plug>SQLU_Formatter<CR>
+nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
+nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
+nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
+nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
+
+"    mnemonic explanation
+"    s - sql
+"      f   - format
+"      cl  - column list
+"      cd  - column definition
+"      cdt - column datatype
+"      cp  - create procedure 
 
 " Convert a decimal number to hexadecimal
 "function Dec_to_hex(decimal_number)
@@ -241,8 +241,8 @@ endif
 "endfunction
 
 " Number of spaces that a <Tab> in the file counts for
-set tabstop=8
-set autoindent shiftwidth=4 softtabstop=4 cindent
+set tabstop=4
+set autoindent shiftwidth=2 softtabstop=2 cindent
 set expandtab
 
 " Options for specific file types
@@ -418,3 +418,4 @@ let html_use_css = 1
     endif
 
 " }
+

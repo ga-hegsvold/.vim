@@ -1,0 +1,1 @@
+/home/gah/git-repos/vim-indexed-search/plugin/IndexedSearch.vim
