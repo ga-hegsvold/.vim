@@ -203,7 +203,11 @@ nmap =j :%!python -m json.tool<CR>
 " Format XML
 map =x !%xmllint --format --recover -<CR>
 
-" FIXME SQL Utils http://www.vim.org/scripts/script.php?script_id=492
+" SQL Utils http://www.vim.org/scripts/script.php?script_id=492
+let g:sqlutil_align_comma = 1
+let g:sqlutil_align_where = 1
+let g:sqlutil_align_first_word = 1
+
 vmap <silent>sf        <Plug>SQLU_Formatter<CR>
 nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
 nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
