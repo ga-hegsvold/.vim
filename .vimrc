@@ -247,7 +247,7 @@ nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 " Number of spaces that a <Tab> in the file counts for
 set tabstop=4
 set autoindent shiftwidth=2 softtabstop=2 cindent
-set expandtab
+"set expandtab
 
 " Options for specific file types
 au BufNewFile,BufRead *.awk,*.b,*.c,*.h,*.vim	set autoindent cindent
@@ -327,6 +327,7 @@ au BufNewFile,BufRead *.java
 au BufNewFile,BufRead *.py
 	\ ab class<		class c:def __init__(self):passdef __str__(self):pass|
 	\ ab ifname<	if __name__ == "__main__":|
+	\ set expandtab
 
 au BufNewFile,BufRead *.xml,*.sgml,*.sgm
 	\ ab article<   <?xml version="1.0" encoding="UTF-8"?><article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="en"><info><title>Article</title><author><firstname>Geir Atle</firstname><surname>Hegsvold</surname></author></info><section><title></title><para></para></section></article>|
