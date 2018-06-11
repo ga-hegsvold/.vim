@@ -1,7 +1,8 @@
 # .vim
 My vim repo
 
-Usage:
+Install:
 ```
-$ git clone git@github.com:ga-hegsvold/.vim.git && ln -s .vim/.vimrc .vimrc
+$ sudo apt install vim-gtk
+$ git clone git@github.com:ga-hegsvold/.vim.git ~/.vim && ln -s ~/.vim/.vimrc ~/.vimrc
 ```
