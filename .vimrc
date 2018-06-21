@@ -122,18 +122,6 @@ set visualbell
 " Allow arrowkeys to skip to next line when on the last/first character
 set whichwrap=<,>,[,]
 
-" My syntax coloring files are sourced from this file
-"let mysyntaxfile = "$VIM/mysyntax/mysyntax.vim"
-"let mysyntaxfile = "$HOME/lib/vim/mysyntax.vim"
-
-" My filetype definitions are sourced from this one
-"let myfiletypefile = "$VIM/mysyntax/myfiletypes.vim"
-"let myfiletypefile = "$HOME/lib/vim/myfiletypes.vim"
-
-" `myscripts.vim' checks for filetypes that must be inspected to be identified
-"let myscriptsfile = "$VIM/mysyntax/myscripts.vim"
-"let myscriptsfile = "$HOME/lib/vim/myscripts.vim"
-
 " I always use bash, and the following variable extends $VIM/syntax/sh.vim
 " for that shell
 let bash_is_sh = 1
@@ -164,39 +152,6 @@ vmap <M-f> !fmt<CR>
 nmap <M-s> :%!sort -df<CR>
 vmap <M-s> !sort -df<CR>
 
-" Only on Unix...
-if has("unix")
-    " Set the default font
-""    set guifont=7x14
-    set guifont=Courier:h8:cDEFAULT
-
-
-    " Format mail/news
-    nmap <M-m> 1G/^$<CR>:.+,$!mfmt<CR>
-    vmap <M-m> !mfmt<CR>
-
-    " Format C comments
-    vmap <M-c> !ccfmt<CR>
-
-    " ROT13 encode
-    nmap <M-r> :%!rot13<CR>
-    vmap <M-r> !rot13<CR>
-
-    " Format syntax files
-    vmap <M-x> !synfmt<CR>
-
-    " Spell check (norwegian)
-    nmap <M-n> :!spell -x '%'<CR>:e '%'<CR>
-    vmap <M-n> !spell -l<CR>
-
-    " Spell check (english)
-    nmap <M-w> :!spell -x -denglish '%'<CR>
-    vmap <M-w> !spell -denglish -l<CR>
-else
-"    set guifont=Lucida_Console:h8:cDEFAULT
-    set guifont=Courier:h8:cDEFAULT
-endif
-
 " Format JSON
 map <M-j> :%!python -m json.tool<CR>
 
@@ -221,28 +176,6 @@ nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 "      cd  - column definition
 "      cdt - column datatype
 "      cp  - create procedure 
-
-" Convert a decimal number to hexadecimal
-"function Dec_to_hex(decimal_number)
-"    let hexnum = ""
-"    let n = a:decimal_number
-"    let hexbase = char2nr("a") - 10
-""    let hexdigits="abcdef"
-"    while n > 0
-"	let hexdigit = n % 16
-"	if hexdigit >= 10
-""	    let hexnum = hexdigits[hexdigit - 10].hexnum
-"	    let hexnum = nr2char(hexbase + hexdigit).hexnum
-"	else
-"	    let hexnum = hexdigit.hexnum
-"	endif
-"	let n = n / 16
-"    endwhile
-"    if hexnum == ""
-"	let hexnum = "0"
-"    endif
-"    return hexnum
-"endfunction
 
 " Number of spaces that a <Tab> in the file counts for
 set tabstop=4
@@ -277,24 +210,9 @@ au BufNewFile,BufRead *.xml,*.xsl,*.xslt,*.xsd,*.html,*.sgml,*.sgm,*.fo	set auto
 au BufNewFile,BufRead _vimrc					set ff=unix
 
 " Abbreviations present in all contexts
-ab coff< coefficient
-ab cont< continuous
-ab de< differential equation
-ab der< derivative
-ab difr< differentiate
-ab difrt< differentiation
-ab dt< determinant
-ab eq< equation
-ab hg< homogeneous
 ab iff< if and only if
-ab le< linearly independent
-ab nhg< nonhomogeneous
-ab pde< partial differential equation
-ab tran< transformation
 
 " Abbreviations specific to certain file types
-au BufNewFile,BufRead *.c,*.h	ab gw< GtkWidget
-au BufNewFile,BufRead *.html	ab li< <LI><A href=
 au BufNewFile,BufRead *.vim	ab abb< au BufNewFile,BufRead
 au BufNewFile,BufRead *vimrc*	ab abb< au BufNewFile,BufRead
 
@@ -326,7 +244,7 @@ au BufNewFile,BufRead *.java
 
 au BufNewFile,BufRead *.py
 	\ ab class<		class c:def __init__(self):passdef __str__(self):pass|
-	\ ab ifname<	if __name__ == "__main__":|
+	\ ab ifname<	if __name__ == "__main__":|
 	\ set expandtab
 
 au BufNewFile,BufRead *.xml,*.sgml,*.sgm
@@ -384,9 +302,6 @@ endif
 
 " Use css when converting to HTML
 let html_use_css = 1
-"set et
-
-" vim: sw=4 ts=4 sts=4
 
 " Identify platform {
         silent function! OSX()
