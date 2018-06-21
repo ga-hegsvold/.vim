@@ -198,10 +198,10 @@ else
 endif
 
 " Format JSON
-map =j :%!python -m json.tool<CR>
+map <M-j> :%!python -m json.tool<CR>
 
 " Format XML
-map =x :%!xmllint --format --recover -<CR>
+map <M-x> :%!xmllint --format --recover -<CR>
 
 " SQL Utils http://www.vim.org/scripts/script.php?script_id=492
 let g:sqlutil_align_comma = 1
