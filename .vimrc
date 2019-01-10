@@ -1,4 +1,4 @@
-" Setup file for VIM 7.4
+" Setup file for GVIM
 " by Geir Atle Hegsvold
 
 " The leader key is used for activation for shortcuts.
@@ -8,6 +8,8 @@ let mapleader = "\<Space>"
 " Pathogen - python plugin (https://github.com/tpope/vim-pathogen)
 filetype off
 execute pathogen#infect()
+" Invoke :helptags on all non-$VIM doc directories in runtimepath
+execute pathogen#helptags()
 
 " Enable syntax highlighting
 syntax on
@@ -201,10 +203,11 @@ au BufNewFile,BufRead *.java			set autoindent
 							\ shiftwidth=4
 							\ softtabstop=4
 							\ tabstop=4
-au BufNewFile,BufRead *.xml,*.xsl,*.xslt,*.xsd,*.html,*.sgml,*.sgm,*.fo	set autoindent
+au BufNewFile,BufRead *.xml,*.xsl,*.xslt,*.xsd,*.html,*.sgml,*.sgm,*.fo,*.json	set autoindent
 										\ shiftwidth=2
 										\ softtabstop=2
 										\ tabstop=2
+
 " This rc file is shared between a Unix and a Win32 VIM, so I don't
 " want any <CR>s cluttering it up when editing it in Windows
 au BufNewFile,BufRead _vimrc					set ff=unix
@@ -215,32 +218,6 @@ ab iff< if and only if
 " Abbreviations specific to certain file types
 au BufNewFile,BufRead *.vim	ab abb< au BufNewFile,BufRead
 au BufNewFile,BufRead *vimrc*	ab abb< au BufNewFile,BufRead
-
-au BufNewFile,BufRead *.java
-	\ ab acev<      ActionEvent|
-	\ ab acperf<    actionPerformed|
-	\ ab addal<     addActionListener|
-	\ ab cnfex<     ClassNotFoundException|
-	\ ab csjs<      com.sun.java.swing|
-	\ ab fis<       FileInputStream|
-	\ ab fnfex<     FileNotFoundException|
-	\ ab fos<       FileOutputStream|
-	\ ab gbc<       GridBagConstraints|
-	\ ab ioex<      IOException|
-	\ ab nfex<      NumberFormatException|
-	\ ab ois<       ObjectInputStream|
-	\ ab oos<       ObjectOutputStream|
-	\ ab pi<        private int|
-	\ ab psi<       public static int|
-	\ ab pss<       public static String|
-	\ ab psv<       public static void|
-	\ ab psvm<      public static void main(String[] args) {} // main()|
-	\ ab sep<       System.err.println|
-	\ ab sex<       System.exit|
-	\ ab sop<       System.out.println|
-	\ ab strmtok<   StreamTokenizer|
-	\ ab swc<       SwingConstants|
-	\ ab zex<       ZipException
 
 au BufNewFile,BufRead *.py
 	\ ab class<		class c:def __init__(self):passdef __str__(self):pass|
