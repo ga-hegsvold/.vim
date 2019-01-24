@@ -1,7 +1,8 @@
 # ignore everything
-*
+/*
 
 # except the following
 !.gitignore
 !README.md
 !.vimrc
+!autoload/pathogen.vim
