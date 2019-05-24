@@ -219,11 +219,13 @@ ab iff< if and only if
 au BufNewFile,BufRead *.vim	ab abb< au BufNewFile,BufRead
 au BufNewFile,BufRead *vimrc*	ab abb< au BufNewFile,BufRead
 
+" python
 au BufNewFile,BufRead *.py
 	\ ab class<		class c:def __init__(self):passdef __str__(self):pass|
 	\ ab ifname<	if __name__ == "__main__":|
 	\ set expandtab
 
+" docbook
 au BufNewFile,BufRead *.xml,*.sgml,*.sgm
 	\ ab article<   <?xml version="1.0" encoding="UTF-8"?><article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="en"><info><title>Article</title><author><firstname>Geir Atle</firstname><surname>Hegsvold</surname></author></info><section><title></title><para></para></section></article>|
 	\ ab chapter<   <chapter><title></title></chapter>|
@@ -247,11 +249,13 @@ au BufNewFile,BufRead *.xml,*.sgml,*.sgm
 	\ ab entry<     <entry></entry>|
 	\ ab xref<      <xref linkend="" />|
 
+" xslt
 au BufNewFile,BufRead *.xsl,*.xslt
 	\ ab apply<     <xsl:apply-templates select="" />|
 	\ ab template<  <xsl:template match=""></xsl:template>|
 	\ ab foreach<   <xsl:for-each select=""></xsl:for-each>|
 
+" xsd
 au BufNewFile,BufRead *.xsd
 	\ ab schema<    <?xml version="1.0" encoding="utf-8"?><xs:schema targetNamespace="http://heim.ifi.uio.no/gahegsvo/rpg/RPGDoc" xmlns="http://heim.ifi.uio.no/gahegsvo/rpg/RPGDoc" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0"></xs:schema>|
 	\ ab include<   <xs:include schemaLocation=""/>|
@@ -300,7 +304,7 @@ let html_use_css = 1
         set lines=40                " 40 lines of text instead of 24
         if !exists("g:spf13_no_big_font")
             if LINUX() && has("gui_running")
-                set guifont=Andale\ Mono\ Regular\ 10,Menlo\ Regular\ 10,Consolas\ Regular\ 10,Courier\ New\ Regular\ 10
+                set guifont=Andale\ Mono\ Regular\ 8,Menlo\ Regular\ 10,Consolas\ Regular\ 10,Courier\ New\ Regular\ 10
             elseif OSX() && has("gui_running")
                 set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
             elseif WINDOWS() && has("gui_running")
