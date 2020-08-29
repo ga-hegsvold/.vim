@@ -246,11 +246,13 @@ au BufNewFile,BufRead *.xml,*.sgml,*.sgm
 	\ ab row<       <row><entry></entry></row>|
 	\ ab entry<     <entry></entry>|
 	\ ab xref<      <xref linkend="" />|
+	\ set expandtab
 
 au BufNewFile,BufRead *.xsl,*.xslt
 	\ ab apply<     <xsl:apply-templates select="" />|
 	\ ab template<  <xsl:template match=""></xsl:template>|
 	\ ab foreach<   <xsl:for-each select=""></xsl:for-each>|
+	\ set expandtab
 
 au BufNewFile,BufRead *.xsd
 	\ ab schema<    <?xml version="1.0" encoding="utf-8"?><xs:schema targetNamespace="http://heim.ifi.uio.no/gahegsvo/rpg/RPGDoc" xmlns="http://heim.ifi.uio.no/gahegsvo/rpg/RPGDoc" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0"></xs:schema>|
@@ -258,6 +260,7 @@ au BufNewFile,BufRead *.xsd
 	\ ab el<        <xs:element name="" type=""/>|
 	\ ab elref<     <xs:element ref="" minOccurs="0" maxOccurs="1"/>|
 	\ ab ct<        <xs:complexType name=""><xs:sequence><xs:element ref="" minOccurs="0" maxOccurs="1"/></xs:sequence></xs:complexType>|
+	\ set expandtab
 
 " Colors 8-15 are high intensity colors:
 "
