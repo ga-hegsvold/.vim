@@ -29,6 +29,7 @@ endif
 " Update intervall for GitGutter
 " More info: https://github.com/airblade/vim-gitgutter
 set updatetime=250
+let g:gitgutter_max_signs = 6000
 
 " Code folding
 set foldmethod=indent
@@ -182,7 +183,7 @@ nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 " Number of spaces that a <Tab> in the file counts for
 set tabstop=4
 set autoindent shiftwidth=2 softtabstop=2 cindent
-"set expandtab
+set expandtab
 
 " Options for specific file types
 au BufNewFile,BufRead *.awk,*.b,*.c,*.h,*.vim	set autoindent cindent
