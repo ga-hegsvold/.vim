@@ -249,12 +249,14 @@ au BufNewFile,BufRead *.xml,*.sgml,*.sgm
 	\ ab row<       <row><entry></entry></row>|
 	\ ab entry<     <entry></entry>|
 	\ ab xref<      <xref linkend="" />|
+	\ set expandtab
 
 " xslt
 au BufNewFile,BufRead *.xsl,*.xslt
 	\ ab apply<     <xsl:apply-templates select="" />|
 	\ ab template<  <xsl:template match=""></xsl:template>|
 	\ ab foreach<   <xsl:for-each select=""></xsl:for-each>|
+	\ set expandtab
 
 " xsd
 au BufNewFile,BufRead *.xsd
@@ -263,6 +265,7 @@ au BufNewFile,BufRead *.xsd
 	\ ab el<        <xs:element name="" type=""/>|
 	\ ab elref<     <xs:element ref="" minOccurs="0" maxOccurs="1"/>|
 	\ ab ct<        <xs:complexType name=""><xs:sequence><xs:element ref="" minOccurs="0" maxOccurs="1"/></xs:sequence></xs:complexType>|
+	\ set expandtab
 
 " Colors 8-15 are high intensity colors:
 "
