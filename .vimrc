@@ -156,7 +156,11 @@ nmap <M-s> :%!sort -df<CR>
 vmap <M-s> !sort -df<CR>
 
 " Format JSON
-map <M-j> :%!python -m json.tool<CR>
+"map <M-j> :%!python -m json.tool<CR>
+map <M-j> :%!jq --indent 2 .<CR>
+
+" Prep for Sesam test data by deleting NIs, rdf:types and _<props>
+map <M-e> :%s/.*-ni.*//g<CR>:%s/.*"rdf:type".*//g<CR>:%s/.*"_deleted".*//g<CR>:%s/.*"_hash".*//g<CR>:%s/.*"_previous".*//g<CR>:%s/.*"_ts".*//g<CR>:%s/.*"_updated".*//g<CR>
 
 " Format XML
 map <M-x> :%!xmllint --format --recover -<CR>
@@ -249,14 +253,14 @@ au BufNewFile,BufRead *.xml,*.sgml,*.sgm
 	\ ab row<       <row><entry></entry></row>|
 	\ ab entry<     <entry></entry>|
 	\ ab xref<      <xref linkend="" />|
-	\ set expandtab
+	\ ab glossdiv<  <glossdiv><title></title><glossentry><glossterm></glossterm><glossdef><para>|
+	\ ab glossent<  <glossentry><glossterm></glossterm><glossdef><para></para></glossdef></glossentry>
 
 " xslt
 au BufNewFile,BufRead *.xsl,*.xslt
 	\ ab apply<     <xsl:apply-templates select="" />|
 	\ ab template<  <xsl:template match=""></xsl:template>|
-	\ ab foreach<   <xsl:for-each select=""></xsl:for-each>|
-	\ set expandtab
+	\ ab foreach<   <xsl:for-each select=""></xsl:for-each>
 
 " xsd
 au BufNewFile,BufRead *.xsd
@@ -264,8 +268,7 @@ au BufNewFile,BufRead *.xsd
 	\ ab include<   <xs:include schemaLocation=""/>|
 	\ ab el<        <xs:element name="" type=""/>|
 	\ ab elref<     <xs:element ref="" minOccurs="0" maxOccurs="1"/>|
-	\ ab ct<        <xs:complexType name=""><xs:sequence><xs:element ref="" minOccurs="0" maxOccurs="1"/></xs:sequence></xs:complexType>|
-	\ set expandtab
+	\ ab ct<        <xs:complexType name=""><xs:sequence><xs:element ref="" minOccurs="0" maxOccurs="1"/></xs:sequence></xs:complexType>
 
 " Colors 8-15 are high intensity colors:
 "
