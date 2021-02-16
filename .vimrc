@@ -11,6 +11,9 @@ execute pathogen#infect()
 " Invoke :helptags on all non-$VIM doc directories in runtimepath
 execute pathogen#helptags()
 
+" Nerdtree (ctrl+n)
+map <C-n> :NERDTreeToggle<CR>
+
 " Enable syntax highlighting
 syntax on
 filetype indent plugin on
@@ -29,7 +32,7 @@ endif
 " Update intervall for GitGutter
 " More info: https://github.com/airblade/vim-gitgutter
 set updatetime=250
-let g:gitgutter_max_signs = 6000
+let g:gitgutter_max_signs = 20000
 
 " Code folding
 set foldmethod=indent
@@ -155,12 +158,18 @@ vmap <M-f> !fmt<CR>
 nmap <M-s> :%!sort -df<CR>
 vmap <M-s> !sort -df<CR>
 
-" Format JSON
-"map <M-j> :%!python -m json.tool<CR>
-map <M-j> :%!jq --indent 2 .<CR>
+" Prep for Sesam test data
+" 1: delete NIs, rdf:types and _<props>
+map <M-1> :%s/.*-ni.*//g<CR>:%s/.*"rdf:type".*//g<CR>:%s/.*"_deleted".*//g<CR>:%s/.*"_hash".*//g<CR>:%s/.*"_previous".*//g<CR>:%s/.*"_ts".*//g<CR>:%s/.*"_updated".*//g<CR>
 
-" Prep for Sesam test data by deleting NIs, rdf:types and _<props>
-map <M-e> :%s/.*-ni.*//g<CR>:%s/.*"rdf:type".*//g<CR>:%s/.*"_deleted".*//g<CR>:%s/.*"_hash".*//g<CR>:%s/.*"_previous".*//g<CR>:%s/.*"_ts".*//g<CR>:%s/.*"_updated".*//g<CR>
+" 2: Strip away linefeeds
+map <M-2> :%s/\n//g<CR>
+
+" 3: Remove trailing comma
+map <M-3> :%s/, \{-}}/}/g<CR>
+
+" Format JSON
+map <M-j> :%!jq --indent 2 .<CR>
 
 " Format XML
 map <M-x> :%!xmllint --format --recover -<CR>
